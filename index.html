@@ -2,117 +2,135 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Feliz aniversário, minha Luiza 🤍</title>
+  <title>Feliz aniversário, minha Luiza 💙</title>
 
   <style>
     body {
       margin: 0;
-      font-family: Georgia, serif;
-      background: linear-gradient(135deg, #fbc2eb, #a18cd1);
+      font-family: "Georgia", serif;
+      background: radial-gradient(circle at top, #0b3c8a, #001a4d);
       color: #ffffff;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      overflow-x: hidden;
     }
 
-    .card {
-      background: rgba(0, 0, 0, 0.25);
-      padding: 40px;
-      border-radius: 20px;
-      max-width: 750px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    /* ESTRELAS */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, #ffffff88, transparent),
+        radial-gradient(2px 2px at 80% 20%, #ffffff88, transparent),
+        radial-gradient(1.5px 1.5px at 50% 70%, #ffffff66, transparent),
+        radial-gradient(1.5px 1.5px at 70% 80%, #ffffff66, transparent);
+      pointer-events: none;
     }
 
     .banner {
-      font-size: 2.4em;
-      font-weight: bold;
       text-align: center;
-      margin-bottom: 35px;
+      padding: 100px 20px 80px;
+      background: linear-gradient(180deg, #0057b8, #002f6c);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
     }
 
-    p {
-      font-size: 1.05em;
-      line-height: 1.7;
-      margin-bottom: 16px;
-      text-align: left;
+    .banner h1 {
+      font-size: 3.5em;
+      margin: 0;
+      letter-spacing: 3px;
+      text-transform: uppercase;
     }
 
-    button {
+    .banner span {
       display: block;
-      margin: 35px auto 0;
-      padding: 14px 32px;
-      border: none;
-      border-radius: 30px;
-      font-size: 1em;
-      cursor: pointer;
+      margin-top: 15px;
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 70px auto;
+      padding: 0 25px;
+      line-height: 1.75;
+      font-size: 1.1em;
+    }
+
+    .container p {
+      margin-bottom: 22px;
+    }
+
+    .botao-hora {
+      display: block;
+      margin: 70px auto 90px;
+      padding: 22px 45px;
+      font-size: 1.3em;
       background: #ffffff;
-      color: #6b4ea0;
-      text-align: center;
-    }
-
-    #surpresa {
-      display: none;
-      margin-top: 50px;
-      text-align: center;
-      animation: fadeIn 1.5s forwards;
-    }
-
-    #olheHora {
-      font-size: 2.4em;
+      color: #0033a0;
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      font-family: inherit;
       font-weight: bold;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transition: transform 0.25s, box-shadow 0.25s;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .botao-hora:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      opacity: 0.85;
+      padding-bottom: 40px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="card">
+  <div class="banner">
+    <h1>Feliz aniversário, minha Luiza</h1>
+    <span>💙⭐</span>
+  </div>
 
-    <!-- BANNER INICIAL -->
-    <div class="banner">
-      Feliz aniversário, minha Luiza. 🤍
-    </div>
-
+  <div class="container">
     <p>Meu amor, é difícil pensar em um presente que seja do tamanho que você merece.</p>
 
     <p>Confesso que eu queria poder estar aí e dar tudo de mim para te proporcionar o dia mais perfeito. Quebrei um pouco a cabeça esses dias pensando em como conseguir transparecer meu amor por você. Mas, com os recursos que eu tenho agora, te entrego esse gesto simples, ainda assim cheio de amor.</p>
 
-    <p>E não só amor. Eu sinto muitas coisas por você: eu admiro profundamente a pessoa que você se construiu nesses, agora, 31 anos de vida. Você é tão magnética, tão leve de se estar por perto, que parece até injusto ter apenas um dia para comemorar a sua existência. Eu respeito sua história, suas qualidades, seu jeito de ser, seus medos, tudo que te torna esse ser humano tão lindo e completo.</p>
+    <p>E não só amor. Eu sinto muitas coisas por você: eu admiro profundamente a pessoa que você se construiu nesses, agora, 31 anos de vida. Você é tão magnética, tão leve de se estar por perto, que parece até injusto ter apenas um dia para comemorar a sua existência.</p>
 
-    <p>Eu tenho orgulho de você, da sua força, da pessoa tão genuinamente engraçada, atenciosa e carismática que você se tornou, como você cuida de mim e de tantos. E eu sei que todos sentem esse mesmo orgulho.</p>
+    <p>Eu tenho orgulho de você, da sua força, da pessoa tão genuinamente engraçada, atenciosa e carismática que você se tornou, como você cuida de mim e de tantos.</p>
 
     <p>E claro que você tinha que nascer dia 24 e roubar o protagonismo de Jesus. Foi mal menino Jesus, mas vamos combinar, né, nem se compara.</p>
 
     <p>Você é inteligente, linda por dentro e por fora, uma ótima amiga, filha, sobrinha, neta, e agora uma namorada maravilhosa.</p>
 
-    <p>Você é meu absoluto estado de graça, "my mirror to the sky". Tudo o que você traz para a minha vida é graciosidade. É aprender a viver de novo, aprender a viver melhor. Você merece o mundo em suas mãos e eu espero que você conquiste todos os seus sonhos, sempre.</p>
+    <p>Você é meu absoluto estado de graça, “my mirror to the sky”. Tudo o que você traz para a minha vida é graciosidade.</p>
 
-    <p>E eu estarei ao seu lado em todos os momentos. Na explosão, na calmaria e no silêncio. Afinal, eu te amo nos dias bons, nos dias ruins e principalmente nos nossos dias comuns. Você merece a graciosidade dos dias comuns, a leveza de poder ser quem é, e ser apreciada por isso, independentemente do que às vezes assombre a mente. Que eu possa, ao longo desse tempo que quero viver com você e comemorar muita coisa, te dar pelo menos um pouco da segurança que você me traz. Você lutou por essa segurança, e eu não poderia ser mais grata. Amor, hoje posso olhar para trás e dizer: valeu, e vale a pena. Segura na minha mão, confia e vem comigo.</p>
-
-    <p>Que este seja o primeiro de muitos aniversários que eu tenha o privilégio de te parabenizar. E que todos ao seu redor tenham o privilégio de celebrar a sua vida.</p>
-
-    <!-- BOTÃO -->
-    <button onclick="mostrarSurpresa()">
-      olhe a hora, te amo agora. eu te amo sempre.
-    </button>
-
-    <!-- SURPRESA -->
-    <div id="surpresa">
-      <div id="olheHora">Olhe a hora.</div>
-    </div>
-
+    <p>E eu estarei ao seu lado em todos os momentos. Na explosão, na calmaria e no silêncio. Segura na minha mão, confia e vem comigo.</p>
   </div>
 
+  <button class="botao-hora" onclick="mostrarHora()">
+    ei psiu, clica aqui rapidinho
+  </button>
+
+  <footer>
+    Cruzeiro sempre no coração 💙⭐
+  </footer>
+
   <script>
-    function mostrarSurpresa() {
-      document.getElementById("surpresa").style.display = "block";
+    function mostrarHora() {
+      const agora = new Date();
+      const hora = agora.toLocaleTimeString("pt-BR");
+      alert("Olhe a hora: " + hora + "\n\nTe amo agora. Eu te amo sempre.");
     }
   </script>
 
