@@ -56,11 +56,11 @@
       z-index: 2;
     }
 
-    /* BANNER ESTILIZADO */
+    /* BANNER ESTILIZADO HARMÔNICO */
     .banner {
       text-align: center;
-      padding: 120px 20px 100px;
-      background: linear-gradient(135deg, #ff7eb3, #7a6bff);
+      padding: 100px 20px 80px;
+      background: linear-gradient(135deg, #1f3c88, #5dade2);
       border-radius: 25px;
       box-shadow: 0 15px 40px rgba(0,0,0,0.5);
       border: 4px solid #ffffff;
@@ -70,7 +70,7 @@
 
     .banner h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 4.5em;
+      font-size: 4em;
       color: #ffffff;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
       margin: 0;
@@ -164,18 +164,35 @@
       display: none;
     }
 
-    /* CONTADOR ANIMADO */
+    /* CONTADOR FLIP */
     .contador {
       text-align: center;
       font-size: 1.2em;
       margin-bottom: 50px;
       font-weight: bold;
+      background: rgba(255,255,255,0.15);
+      padding: 20px 25px;
+      border-radius: 20px;
+      border: 2px solid rgba(255,255,255,0.4);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .contador span {
+    .flip-number {
+      background: rgba(255,255,255,0.25);
+      padding: 15px 12px;
+      border-radius: 12px;
+      min-width: 40px;
       display: inline-block;
-      min-width: 25px;
-      transition: all 0.3s ease;
+      animation: flip 0.5s ease;
+    }
+
+    @keyframes flip {
+      0% { transform: rotateX(-180deg); opacity: 0; }
+      100% { transform: rotateX(0deg); opacity: 1; }
     }
 
     @media (max-width: 480px) {
@@ -189,6 +206,14 @@
       .botao-hora {
         font-size: 1.1em;
         padding: 18px 35px;
+      }
+      .contador {
+        font-size: 1em;
+        padding: 15px 20px;
+      }
+      .flip-number {
+        min-width: 30px;
+        padding: 10px 8px;
       }
     }
 
@@ -226,9 +251,13 @@
         </iframe>
       </div>
 
-      <!-- CONTADOR DE TEMPO -->
+      <!-- CONTADOR FLIP -->
       <div class="contador" id="contadorTempo">
-        💙 Estamos juntas há <span>0</span> dias, <span>0</span> horas, <span>0</span> minutos, <span>0</span> segundos 💙
+        💙 Estamos juntas há 
+        <span class="flip-number">0</span> dias, 
+        <span class="flip-number">0</span> horas, 
+        <span class="flip-number">0</span> minutos, 
+        <span class="flip-number">0</span> segundos 💙
       </div>
 
       <!-- TEXTO -->
@@ -305,7 +334,7 @@
       }, 3000);
     }
 
-    /* CONTADOR ANIMADO */
+    /* CONTADOR FLIP */
     function atualizarContador() {
       const inicio = new Date("2025-11-29T00:00:00");
       const agora = new Date();
@@ -320,10 +349,10 @@
 
       const contador = document.getElementById("contadorTempo");
       contador.innerHTML = `💙 Estamos juntas há 
-        <span>${dias}</span> dias, 
-        <span>${horas}</span> horas, 
-        <span>${minutos}</span> minutos, 
-        <span>${segundos}</span> segundos 💙`;
+        <span class="flip-number">${dias}</span> dias, 
+        <span class="flip-number">${horas}</span> horas, 
+        <span class="flip-number">${minutos}</span> minutos, 
+        <span class="flip-number">${segundos}</span> segundos 💙`;
     }
     setInterval(atualizarContador, 1000);
     atualizarContador();
