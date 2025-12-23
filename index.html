@@ -114,8 +114,10 @@
     /* CONSTELAÇÃO DE CAPRICÓRNIO */
     .constelacao {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      top: 15%;
+      left: 10%;
+      width: 200px;
+      height: 100px;
       pointer-events: none;
       z-index: 3;
     }
@@ -249,6 +251,7 @@
       .text-container { font-size: 0.95em; padding: 20px; }
       .botao-hora { font-size: 1.1em; padding: 18px 35px; }
       .contador { font-size: 1em; padding: 15px 20px; }
+      .constelacao { width: 140px; height: 70px; top: 20%; left: 5%; }
     }
   </style>
 </head>
@@ -290,21 +293,21 @@
       <div class="text-container">
         <p>Meu amor, é difícil pensar em um presente que seja do tamanho que você merece.</p>
 
-        <p>Confesso que eu queria poder estar aí e dar tudo de mim para te proporcionar o dia mais perfeito...</p>
+        <p>Confesso que eu queria poder estar aí e dar tudo de mim para te proporcionar o dia mais perfeito. Quebrei um pouco a cabeça esses dias pensando em como conseguir transparecer meu amor por você. Mas, com os recursos que eu tenho agora, te entrego esse gesto simples, ainda assim cheio de amor.</p>
 
-        <p>E não só amor. Eu sinto muitas coisas por você: eu admiro profundamente...</p>
+        <p>E não só amor. Eu sinto muitas coisas por você: eu admiro profundamente a pessoa que você se construiu nesses, agora, 31 anos de vida. Você é tão magnética, tão leve de se estar por perto, que parece até injusto ter apenas um dia para comemorar a sua existência.</p>
 
-        <p>Eu respeito sua história, suas qualidades, seu jeito de ser...</p>
+        <p>Eu respeito sua história, suas qualidades, seu jeito de ser, seus medos, tudo que te torna esse ser humano tão lindo e completo. Eu tenho orgulho de você, da sua força, da pessoa tão genuinamente engraçada, atenciosa e carismática que você se tornou, como você cuida de mim e de tantos. E eu sei que todos sentem esse mesmo orgulho.</p>
 
-        <p>E claro que você tinha que nascer dia 24 e roubar o protagonismo de Jesus...</p>
+        <p>E claro que você tinha que nascer dia 24 e roubar o protagonismo de Jesus. Foi mal menino Jesus, mas vamos combinar, né, nem se compara.</p>
 
-        <p>Você é inteligente, linda por dentro e por fora...</p>
+        <p>Você é inteligente, linda por dentro e por fora, uma ótima amiga, filha, sobrinha, neta, e agora uma namorada maravilhosa.</p>
 
-        <p>Você é meu absoluto estado de graça, “my mirror to the sky”...</p>
+        <p>Você é meu absoluto estado de graça, “my mirror to the sky”. Tudo o que você traz para a minha vida é graciosidade. É aprender a viver de novo, aprender a viver melhor. Você merece o mundo em suas mãos e eu espero que você conquiste todos os seus sonhos, sempre.</p>
 
-        <p>E eu estarei ao seu lado em todos os momentos...</p>
+        <p>E eu estarei ao seu lado em todos os momentos. Na explosão, na calmaria e no silêncio. Afinal, eu te amo nos dias bons, nos dias ruins e principalmente nos nossos dias comuns. Você merece a graciosidade dos dias comuns, a leveza de poder ser quem é, e ser apreciada por isso, independentemente do que às vezes assombre a mente. Que eu possa, ao longo desse tempo que quero viver com você e comemorar muita coisa, te dar pelo menos um pouco da segurança que você me traz. Você lutou por essa segurança, e eu não poderia ser mais grata. Amor, hoje posso olhar para trás e dizer: valeu, e vale a pena. Segura na minha mão, confia e vem comigo.</p>
 
-        <p>Que este seja o primeiro de muitos aniversários que eu tenha o privilégio de te parabenizar...</p>
+        <p>Que este seja o primeiro de muitos aniversários que eu tenha o privilégio de te parabenizar. E que todos ao seu redor tenham o privilégio de celebrar a sua vida.</p>
       </div>
 
       <button class="botao-hora" onclick="mostrarHora()">
@@ -354,17 +357,17 @@
     }
     criarBannerIcones();
 
-    // CONSTELAÇÃO DE CAPRICÓRNIO COM POSIÇÕES PERCENTUAIS
+    // CONSTELAÇÃO DE CAPRICÓRNIO
     function criarConstelacao() {
       const constelacao = document.getElementById('constelacaoCapricornio');
       const posicoes = [
         {x:10,y:40},{x:30,y:10},{x:50,y:30},{x:70,y:15},{x:90,y:40},{x:70,y:60},{x:50,y:50},{x:30,y:70},{x:10,y:60}
       ];
-      posicoes.forEach((pos)=>{
+      posicoes.forEach((pos,index)=>{
         const estrela = document.createElement('div');
         estrela.className = 'estrela-constelacao';
-        estrela.style.left = pos.x + '%';
-        estrela.style.top = pos.y + '%';
+        estrela.style.left = pos.x + 'px';
+        estrela.style.top = pos.y + 'px';
         constelacao.appendChild(estrela);
       });
       for(let i=0;i<posicoes.length-1;i++){
@@ -374,11 +377,11 @@
         const y1 = posicoes[i].y;
         const x2 = posicoes[i+1].x;
         const y2 = posicoes[i+1].y;
-        const comprimento = Math.hypot(x2-x1,y2-y1) + '%';
+        const comprimento = Math.hypot(x2-x1,y2-y1);
         const angulo = Math.atan2(y2-y1,x2-x1)*180/Math.PI;
-        linha.style.width = comprimento;
-        linha.style.top = y1 + '%';
-        linha.style.left = x1 + '%';
+        linha.style.width = comprimento + 'px';
+        linha.style.top = y1 + 'px';
+        linha.style.left = x1 + 'px';
         linha.style.transform = `rotate(${angulo}deg)`;
         constelacao.appendChild(linha);
       }
@@ -396,7 +399,7 @@
       setTimeout(() => { alerta.style.opacity = 0; setTimeout(() => { alerta.style.display = "none"; }, 300); }, 3000);
     }
 
-    // CONTADOR TEMPO REAL LISO
+    // CONTADOR LISO, TEMPO REAL
     function atualizarContador() {
       const inicio = new Date("2025-11-29T00:00:00");
       const agora = new Date();
