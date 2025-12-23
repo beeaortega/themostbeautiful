@@ -76,7 +76,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%);
+      background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
       animation: girar 30s linear infinite;
       pointer-events: none;
     }
@@ -94,6 +94,54 @@
       margin: 0;
       position: relative;
       z-index: 2;
+    }
+
+    /* CORAÇÕES E ESTRELAS SOBRE O BANNER */
+    .banner-coracao, .banner-estrela {
+      position: absolute;
+      font-size: 12px;
+      opacity: 0.3;
+      animation: flutuarBanner 8s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes flutuarBanner {
+      0% { transform: translateY(0) translateX(0); opacity: 0.3; }
+      50% { transform: translateY(-20px) translateX(5px); opacity: 0.5; }
+      100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+    }
+
+    /* CONSTELAÇÃO DE CAPRICÓRNIO */
+    .constelacao {
+      position: absolute;
+      top: 15%;
+      left: 10%;
+      width: 200px;
+      height: 100px;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .estrela-constelacao {
+      width: 6px;
+      height: 6px;
+      background: #ffffff;
+      border-radius: 50%;
+      position: absolute;
+      opacity: 0.8;
+      animation: piscar 2s infinite alternate;
+    }
+
+    .linha-constelacao {
+      position: absolute;
+      height: 2px;
+      background: rgba(255,255,255,0.4);
+      transform-origin: left center;
+    }
+
+    @keyframes piscar {
+      0% { opacity: 0.4; }
+      100% { opacity: 1; }
     }
 
     .container {
@@ -181,7 +229,6 @@
       display: none;
     }
 
-    /* CONTADOR LIMPO */
     .contador {
       text-align: center;
       font-size: 1.2em;
@@ -204,6 +251,7 @@
       .text-container { font-size: 0.95em; padding: 20px; }
       .botao-hora { font-size: 1.1em; padding: 18px 35px; }
       .contador { font-size: 1em; padding: 15px 20px; }
+      .constelacao { width: 140px; height: 70px; top: 20%; left: 5%; }
     }
   </style>
 </head>
@@ -217,6 +265,7 @@
 
     <div class="banner">
       <h1>Feliz aniversário, minha Luiza 💙</h1>
+      <div class="constelacao" id="constelacaoCapricornio"></div>
     </div>
 
     <div class="container">
@@ -237,29 +286,29 @@
         </iframe>
       </div>
 
-      <!-- CONTADOR -->
       <div class="contador" id="contadorTempo">
         💙 Estamos juntas há 0 dias, 0 horas, 0 minutos, 0 segundos 💙
       </div>
 
       <div class="text-container">
         <p>Meu amor, é difícil pensar em um presente que seja do tamanho que você merece.</p>
-
+        
         <p>Confesso que eu queria poder estar aí e dar tudo de mim para te proporcionar o dia mais perfeito. Quebrei um pouco a cabeça esses dias pensando em como conseguir transparecer meu amor por você. Mas, com os recursos que eu tenho agora, te entrego esse gesto simples, ainda assim cheio de amor.</p>
-
+        
         <p>E não só amor. Eu sinto muitas coisas por você: eu admiro profundamente a pessoa que você se construiu nesses, agora, 31 anos de vida. Você é tão magnética, tão leve de se estar por perto, que parece até injusto ter apenas um dia para comemorar a sua existência.</p>
-
+        
         <p>Eu respeito sua história, suas qualidades, seu jeito de ser, seus medos, tudo que te torna esse ser humano tão lindo e completo. Eu tenho orgulho de você, da sua força, da pessoa tão genuinamente engraçada, atenciosa e carismática que você se tornou, como você cuida de mim e de tantos. E eu sei que todos sentem esse mesmo orgulho.</p>
-
+        
         <p>E claro que você tinha que nascer dia 24 e roubar o protagonismo de Jesus. Foi mal menino Jesus, mas vamos combinar, né, nem se compara.</p>
-
+        
         <p>Você é inteligente, linda por dentro e por fora, uma ótima amiga, filha, sobrinha, neta, e agora uma namorada maravilhosa.</p>
-
+        
         <p>Você é meu absoluto estado de graça, “my mirror to the sky”. Tudo o que você traz para a minha vida é graciosidade. É aprender a viver de novo, aprender a viver melhor. Você merece o mundo em suas mãos e eu espero que você conquiste todos os seus sonhos, sempre.</p>
-
+        
         <p>E eu estarei ao seu lado em todos os momentos. Na explosão, na calmaria e no silêncio. Afinal, eu te amo nos dias bons, nos dias ruins e principalmente nos nossos dias comuns. Você merece a graciosidade dos dias comuns, a leveza de poder ser quem é, e ser apreciada por isso, independentemente do que às vezes assombre a mente. Que eu possa, ao longo desse tempo que quero viver com você e comemorar muita coisa, te dar pelo menos um pouco da segurança que você me traz. Você lutou por essa segurança, e eu não poderia ser mais grata. Amor, hoje posso olhar para trás e dizer: valeu, e vale a pena. Segura na minha mão, confia e vem comigo.</p>
-
+        
         <p>Que este seja o primeiro de muitos aniversários que eu tenha o privilégio de te parabenizar. E que todos ao seu redor tenham o privilégio de celebrar a sua vida.</p>
+        
       </div>
 
       <button class="botao-hora" onclick="mostrarHora()">
@@ -293,6 +342,54 @@
     }
     criarElementos(".estrelas", "", 70);
     criarElementos(".coracoes", "💙", 18);
+
+    // ÍCONES ANIMADOS SOBRE BANNER
+    function criarBannerIcones() {
+      const banner = document.querySelector('.banner');
+      for (let i = 0; i < 20; i++) {
+        const icone = document.createElement('div');
+        icone.className = i % 2 === 0 ? 'banner-coracao' : 'banner-estrela';
+        icone.innerText = i % 2 === 0 ? '💙' : '✨';
+        icone.style.left = Math.random() * 90 + '%';
+        icone.style.top = Math.random() * 80 + '%';
+        icone.style.animationDuration = (6 + Math.random() * 6) + 's';
+        banner.appendChild(icone);
+      }
+    }
+    criarBannerIcones();
+
+    // CONSTELAÇÃO DE CAPRICÓRNIO
+    function criarConstelacao() {
+      const constelacao = document.getElementById('constelacaoCapricornio');
+      const posicoes = [
+        {x:10,y:40},{x:30,y:10},{x:50,y:30},{x:70,y:15},{x:90,y:40},{x:70,y:60},{x:50,y:50},{x:30,y:70},{x:10,y:60}
+      ];
+      // Criar estrelas
+      posicoes.forEach((pos,index)=>{
+        const estrela = document.createElement('div');
+        estrela.className = 'estrela-constelacao';
+        estrela.style.left = pos.x + 'px';
+        estrela.style.top = pos.y + 'px';
+        constelacao.appendChild(estrela);
+      });
+      // Criar linhas
+      for(let i=0;i<posicoes.length-1;i++){
+        const linha = document.createElement('div');
+        linha.className='linha-constelacao';
+        const x1 = posicoes[i].x;
+        const y1 = posicoes[i].y;
+        const x2 = posicoes[i+1].x;
+        const y2 = posicoes[i+1].y;
+        const comprimento = Math.hypot(x2-x1,y2-y1);
+        const angulo = Math.atan2(y2-y1,x2-x1)*180/Math.PI;
+        linha.style.width = comprimento + 'px';
+        linha.style.top = y1 + 'px';
+        linha.style.left = x1 + 'px';
+        linha.style.transform = `rotate(${angulo}deg)`;
+        constelacao.appendChild(linha);
+      }
+    }
+    criarConstelacao();
 
     // ALERTA ESTILIZADO
     function mostrarHora() {
