@@ -56,24 +56,29 @@
       z-index: 2;
     }
 
+    /* BANNER ESTILIZADO */
     .banner {
       text-align: center;
-      padding: 100px 20px 80px;
-      background: linear-gradient(180deg, #0057b8, #002f6c);
+      padding: 120px 20px 100px;
+      background: linear-gradient(135deg, #ff7eb3, #7a6bff);
+      border-radius: 25px;
       box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      border: 4px solid #ffffff;
+      margin: 20px auto;
+      max-width: 90%;
     }
 
     .banner h1 {
-      font-family: 'Great Vibes', cursive; /* Fonte mais bonita */
-      font-size: 4em;
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.5em;
+      color: #ffffff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
       margin: 0;
-      letter-spacing: 2px;
-      text-transform: none;
     }
 
     .container {
       max-width: 900px;
-      margin: 70px auto;
+      margin: 40px auto;
       padding: 0 25px;
       line-height: 1.75;
       font-size: 1.1em;
@@ -99,25 +104,28 @@
       margin-bottom: 22px;
     }
 
+    /* BOTÃO ESTILIZADO */
     .botao-hora {
       display: block;
-      margin: 70px auto 90px;
+      margin: 40px auto 20px;
       padding: 22px 45px;
       font-size: 1.3em;
-      background: #ffffff;
-      color: #0033a0;
+      background: linear-gradient(135deg, #6bb0ff, #0047b3);
+      color: #ffffff;
       border: none;
       border-radius: 60px;
       cursor: pointer;
       font-family: inherit;
       font-weight: bold;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
     }
 
-    .botao-hora:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    .botao-hora:hover, 
+    .botao-hora:active {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      background: linear-gradient(135deg, #8ac6ff, #0057b8);
     }
 
     footer {
@@ -127,13 +135,61 @@
       padding-bottom: 40px;
     }
 
-    /* CAIXA BONITINHA PARA O TEXTO */
+    /* CAIXA DE TEXTO BONITINHA */
     .text-container {
-      background: rgba(0, 0, 0, 0.5); /* fundo semitransparente */
+      background: rgba(0, 0, 0, 0.55);
       padding: 30px 25px;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       margin-bottom: 50px;
+    }
+
+    /* ALERTA ESTILIZADO */
+    #alertaHora {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #ffffff;
+      color: #0033a0;
+      font-weight: bold;
+      font-size: 1.2em;
+      padding: 25px 35px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      text-align: center;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: none;
+    }
+
+    /* CONTADOR ANIMADO */
+    .contador {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 50px;
+      font-weight: bold;
+    }
+
+    .contador span {
+      display: inline-block;
+      min-width: 25px;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 480px) {
+      .banner h1 {
+        font-size: 3em;
+      }
+      .text-container {
+        font-size: 0.95em;
+        padding: 20px;
+      }
+      .botao-hora {
+        font-size: 1.1em;
+        padding: 18px 35px;
+      }
     }
 
   </style>
@@ -141,7 +197,7 @@
 
 <body>
 
-  <!-- FUNDO -->
+  <!-- FUNDO ANIMADO -->
   <div class="estrelas"></div>
   <div class="coracoes"></div>
 
@@ -170,7 +226,12 @@
         </iframe>
       </div>
 
-      <!-- TEXTO COMPLETO DENTRO DA CAIXA BONITINHA -->
+      <!-- CONTADOR DE TEMPO -->
+      <div class="contador" id="contadorTempo">
+        💙 Estamos juntas há <span>0</span> dias, <span>0</span> horas, <span>0</span> minutos, <span>0</span> segundos 💙
+      </div>
+
+      <!-- TEXTO -->
       <div class="text-container">
 
         <p>Meu amor, é difícil pensar em um presente que seja do tamanho que você merece.</p>
@@ -193,7 +254,7 @@
 
       </div>
 
-      <!-- BOTÃO E FOOTER -->
+      <!-- BOTÃO -->
       <button class="botao-hora" onclick="mostrarHora()">
         ei psiu, clica aqui rapidinho
       </button>
@@ -206,7 +267,13 @@
 
   </div>
 
+  <!-- ALERTA ESTILIZADO -->
+  <div id="alertaHora">
+    <p>💙 Olhe a hora: <span id="horaAgora"></span> 💙<br>Te amo agora. Eu te amo sempre. 💙</p>
+  </div>
+
   <script>
+    /* CRIA ESTRELAS E CORAÇÕES */
     function criarElementos(classe, simbolo, quantidade) {
       const container = document.querySelector(classe);
       for (let i = 0; i < quantidade; i++) {
@@ -219,15 +286,47 @@
         container.appendChild(el);
       }
     }
-
     criarElementos(".estrelas", "", 70);
     criarElementos(".coracoes", "💙", 18);
 
+    /* ALERTA ESTILIZADO */
     function mostrarHora() {
       const agora = new Date();
       const hora = agora.toLocaleTimeString("pt-BR");
-      alert("Olhe a hora: " + hora + "\n\nTe amo agora. Eu te amo sempre.");
+      const alerta = document.getElementById("alertaHora");
+      document.getElementById("horaAgora").textContent = hora;
+
+      alerta.style.display = "block";
+      alerta.style.opacity = 1;
+
+      setTimeout(() => {
+        alerta.style.opacity = 0;
+        setTimeout(() => { alerta.style.display = "none"; }, 300);
+      }, 3000);
     }
+
+    /* CONTADOR ANIMADO */
+    function atualizarContador() {
+      const inicio = new Date("2025-11-29T00:00:00");
+      const agora = new Date();
+      let diff = Math.floor((agora - inicio) / 1000);
+
+      const dias = Math.floor(diff / 86400);
+      diff %= 86400;
+      const horas = Math.floor(diff / 3600);
+      diff %= 3600;
+      const minutos = Math.floor(diff / 60);
+      const segundos = diff % 60;
+
+      const contador = document.getElementById("contadorTempo");
+      contador.innerHTML = `💙 Estamos juntas há 
+        <span>${dias}</span> dias, 
+        <span>${horas}</span> horas, 
+        <span>${minutos}</span> minutos, 
+        <span>${segundos}</span> segundos 💙`;
+    }
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
   </script>
 
 </body>
