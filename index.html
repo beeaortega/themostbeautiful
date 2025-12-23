@@ -14,20 +14,44 @@
       overflow-x: hidden;
     }
 
-    /* ESTRELAS */
-    body::before {
-      content: "";
+    /* FUNDO ANIMADO */
+    .estrelas, .coracoes {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image:
-        radial-gradient(2px 2px at 20% 30%, #ffffff88, transparent),
-        radial-gradient(2px 2px at 80% 20%, #ffffff88, transparent),
-        radial-gradient(1.5px 1.5px at 50% 70%, #ffffff66, transparent),
-        radial-gradient(1.5px 1.5px at 70% 80%, #ffffff66, transparent);
       pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .estrela, .coracao {
+      position: absolute;
+      opacity: 0.7;
+      animation: flutuar linear infinite;
+    }
+
+    .estrela {
+      width: 3px;
+      height: 3px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .coracao {
+      font-size: 14px;
+    }
+
+    @keyframes flutuar {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
+    }
+
+    /* CONTEÚDO */
+    .conteudo {
+      position: relative;
+      z-index: 2;
     }
 
     .banner {
@@ -44,19 +68,28 @@
       text-transform: uppercase;
     }
 
-    .banner span {
-      display: block;
-      margin-top: 15px;
-      font-size: 1.2em;
-      opacity: 0.9;
-    }
-
     .container {
       max-width: 900px;
       margin: 70px auto;
       padding: 0 25px;
       line-height: 1.75;
       font-size: 1.1em;
+    }
+
+    .intro-musica {
+      font-style: italic;
+      font-size: 1.15em;
+      margin-bottom: 25px;
+      text-align: center;
+      opacity: 0.95;
+    }
+
+    .player {
+      max-width: 500px;
+      margin: 0 auto 50px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
 
     .container p {
@@ -95,38 +128,82 @@
 
 <body>
 
-  <div class="banner">
-    <h1>Feliz aniversário, minha Luiza</h1>
-    <span>💙⭐</span>
+  <!-- FUNDO -->
+  <div class="estrelas"></div>
+  <div class="coracoes"></div>
+
+  <div class="conteudo">
+
+    <div class="banner">
+      <h1>Feliz aniversário, minha Luiza</h1>
+    </div>
+
+    <div class="container">
+
+      <p class="intro-musica">
+        mas calma… antes de eu falar tudo que sinto,<br>
+        DJ solta um sonzinho pra gente 🎧
+      </p>
+
+      <div class="player">
+        <iframe
+  data-testid="embed-iframe"
+  style="border-radius:12px"
+  src="https://open.spotify.com/embed/track/1iASoCFNZ96cKRcNRYJp?utm_source=generator"
+  width="100%"
+  height="352"
+  frameBorder="0"
+  allowfullscreen=""
+  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+  loading="lazy">
+</iframe>
+
+      </div>
+
+      <p>Meu amor, é difícil pensar em um presente que seja do tamanho que você merece.</p>
+
+      <p>Confesso que eu queria poder estar aí e dar tudo de mim para te proporcionar o dia mais perfeito. Quebrei um pouco a cabeça esses dias pensando em como conseguir transparecer meu amor por você. Mas, com os recursos que eu tenho agora, te entrego esse gesto simples, ainda assim cheio de amor.</p>
+
+      <p>E não só amor. Eu sinto muitas coisas por você: eu admiro profundamente a pessoa que você se construiu nesses, agora, 31 anos de vida. Você é tão magnética, tão leve de se estar por perto, que parece até injusto ter apenas um dia para comemorar a sua existência.</p>
+
+      <p>Eu tenho orgulho de você, da sua força, da pessoa tão genuinamente engraçada, atenciosa e carismática que você se tornou, como você cuida de mim e de tantos.</p>
+
+      <p>E claro que você tinha que nascer dia 24 e roubar o protagonismo de Jesus. Foi mal menino Jesus, mas vamos combinar, né, nem se compara.</p>
+
+      <p>Você é inteligente, linda por dentro e por fora, uma ótima amiga, filha, sobrinha, neta, e agora uma namorada maravilhosa.</p>
+
+      <p>Você é meu absoluto estado de graça, “my mirror to the sky”. Tudo o que você traz para a minha vida é graciosidade.</p>
+
+      <p>E eu estarei ao seu lado em todos os momentos. Na explosão, na calmaria e no silêncio. Segura na minha mão, confia e vem comigo.</p>
+    </div>
+
+    <button class="botao-hora" onclick="mostrarHora()">
+      ei psiu, clica aqui rapidinho
+    </button>
+
+    <footer>
+      Cruzeiro sempre no coração 💙⭐
+    </footer>
+
   </div>
-
-  <div class="container">
-    <p>Meu amor, é difícil pensar em um presente que seja do tamanho que você merece.</p>
-
-    <p>Confesso que eu queria poder estar aí e dar tudo de mim para te proporcionar o dia mais perfeito. Quebrei um pouco a cabeça esses dias pensando em como conseguir transparecer meu amor por você. Mas, com os recursos que eu tenho agora, te entrego esse gesto simples, ainda assim cheio de amor.</p>
-
-    <p>E não só amor. Eu sinto muitas coisas por você: eu admiro profundamente a pessoa que você se construiu nesses, agora, 31 anos de vida. Você é tão magnética, tão leve de se estar por perto, que parece até injusto ter apenas um dia para comemorar a sua existência.</p>
-
-    <p>Eu tenho orgulho de você, da sua força, da pessoa tão genuinamente engraçada, atenciosa e carismática que você se tornou, como você cuida de mim e de tantos.</p>
-
-    <p>E claro que você tinha que nascer dia 24 e roubar o protagonismo de Jesus. Foi mal menino Jesus, mas vamos combinar, né, nem se compara.</p>
-
-    <p>Você é inteligente, linda por dentro e por fora, uma ótima amiga, filha, sobrinha, neta, e agora uma namorada maravilhosa.</p>
-
-    <p>Você é meu absoluto estado de graça, “my mirror to the sky”. Tudo o que você traz para a minha vida é graciosidade.</p>
-
-    <p>E eu estarei ao seu lado em todos os momentos. Na explosão, na calmaria e no silêncio. Segura na minha mão, confia e vem comigo.</p>
-  </div>
-
-  <button class="botao-hora" onclick="mostrarHora()">
-    ei psiu, clica aqui rapidinho
-  </button>
-
-  <footer>
-    Cruzeiro sempre no coração 💙⭐
-  </footer>
 
   <script>
+    function criarElementos(classe, simbolo, quantidade) {
+      const container = document.querySelector(classe);
+      for (let i = 0; i < quantidade; i++) {
+        const el = document.createElement("div");
+        el.className = classe === ".estrelas" ? "estrela" : "coracao";
+        el.innerText = simbolo || "";
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.animationDuration = (12 + Math.random() * 20) + "s";
+        el.style.animationDelay = Math.random() * 5 + "s";
+        container.appendChild(el);
+      }
+    }
+
+    criarElementos(".estrelas", "", 70);
+    criarElementos(".coracoes", "💙", 18);
+
     function mostrarHora() {
       const agora = new Date();
       const hora = agora.toLocaleTimeString("pt-BR");
