@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Para você, meu amor 🤍</title>
+  <title>Feliz aniversário, minha Luiza 🤍</title>
 
   <style>
     body {
@@ -19,10 +19,17 @@
 
     .card {
       background: rgba(0, 0, 0, 0.25);
-      padding: 35px;
+      padding: 40px;
       border-radius: 20px;
-      max-width: 700px;
+      max-width: 750px;
       box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    }
+
+    .banner {
+      font-size: 2.4em;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 35px;
     }
 
     p {
@@ -34,31 +41,26 @@
 
     button {
       display: block;
-      margin: 30px auto 0;
-      padding: 12px 30px;
+      margin: 35px auto 0;
+      padding: 14px 32px;
       border: none;
       border-radius: 30px;
       font-size: 1em;
       cursor: pointer;
       background: #ffffff;
       color: #6b4ea0;
+      text-align: center;
     }
 
     #surpresa {
       display: none;
-      margin-top: 40px;
+      margin-top: 50px;
       text-align: center;
       animation: fadeIn 1.5s forwards;
     }
 
     #olheHora {
-      font-size: 2.2em;
-      margin-bottom: 40px;
-      font-weight: bold;
-    }
-
-    #final {
-      font-size: 1.8em;
+      font-size: 2.4em;
       font-weight: bold;
     }
 
@@ -72,6 +74,12 @@
 <body>
 
   <div class="card">
+
+    <!-- BANNER INICIAL -->
+    <div class="banner">
+      Feliz aniversário, minha Luiza. 🤍
+    </div>
+
     <p>Meu amor, é difícil pensar em um presente que seja do tamanho que você merece.</p>
 
     <p>Confesso que eu queria poder estar aí e dar tudo de mim para te proporcionar o dia mais perfeito. Quebrei um pouco a cabeça esses dias pensando em como conseguir transparecer meu amor por você. Mas, com os recursos que eu tenho agora, te entrego esse gesto simples, ainda assim cheio de amor.</p>
@@ -90,14 +98,16 @@
 
     <p>Que este seja o primeiro de muitos aniversários que eu tenha o privilégio de te parabenizar. E que todos ao seu redor tenham o privilégio de celebrar a sua vida.</p>
 
-    <p>Eu amo você.</p>
+    <!-- BOTÃO -->
+    <button onclick="mostrarSurpresa()">
+      olhe a hora, te amo agora. eu te amo sempre.
+    </button>
 
-    <button onclick="mostrarSurpresa()">Clique aqui</button>
-
+    <!-- SURPRESA -->
     <div id="surpresa">
       <div id="olheHora">Olhe a hora.</div>
-      <div id="final">Feliz aniversário, minha Luiza. 🤍</div>
     </div>
+
   </div>
 
   <script>
